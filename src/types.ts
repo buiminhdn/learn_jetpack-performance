@@ -61,3 +61,24 @@ export interface ChecklistCategory {
 }
 
 export type ComposePhase = 'composition' | 'layout' | 'draw'
+
+/** A reusable AI review prompt in the prompt library. */
+export interface PromptItem {
+  id: string
+  /** Short Vietnamese title. */
+  title: string
+  /** One-line description of what the prompt does. */
+  description: string
+  /** Tags shown as chips (e.g. "Performance", "Logic"). */
+  tags: string[]
+  /** The full prompt body, copied to clipboard as-is. */
+  body: string
+}
+
+/** A category grouping prompts in the library. */
+export interface PromptCategory {
+  id: string
+  title: string
+  icon: string
+  prompts: PromptItem[]
+}

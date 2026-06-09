@@ -51,6 +51,9 @@ export function HomePage() {
             <Link to="/quiz" className="btn-ghost text-base">
               ❓ Làm Quiz
             </Link>
+            <Link to="/prompts" className="btn-ghost text-base">
+              💬 Thư viện Prompt
+            </Link>
           </div>
         </motion.div>
 

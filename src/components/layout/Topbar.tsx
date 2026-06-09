@@ -9,6 +9,7 @@ const NAV = [
   { to: '/playground', label: 'Playground', icon: '🧪' },
   { to: '/quiz', label: 'Quiz', icon: '❓' },
   { to: '/checklist', label: 'Checklist', icon: '✅' },
+  { to: '/prompts', label: 'Prompt', icon: '💬' },
 ]
 
 export function Topbar({ onToggleMenu }: TopbarProps) {
