@@ -1,0 +1,98 @@
+import type { ChecklistCategory } from '../types'
+
+export const CHECKLIST: ChecklistCategory[] = [
+  {
+    id: 'recomposition',
+    title: 'Recomposition và State',
+    icon: '🔄',
+    items: [
+      { id: 'r1', label: 'Không có phép tính nặng trực tiếp trong Composable.' },
+      { id: 'r2', label: 'remember có đầy đủ key cần thiết.' },
+      { id: 'r3', label: 'Không lạm dụng derivedStateOf.' },
+      { id: 'r4', label: 'State được giữ gần nơi sử dụng.' },
+      { id: 'r5', label: 'Child chỉ nhận dữ liệu thực sự cần.' },
+      { id: 'r6', label: 'Không ghi state trực tiếp trong thân Composable.' },
+      { id: 'r7', label: 'Không dùng mutable collection không observable.' },
+      { id: 'r8', label: 'UI state ưu tiên immutable.' },
+      { id: 'r9', label: 'Không emit state mới khi nội dung không đổi.' },
+    ],
+  },
+  {
+    id: 'lazy',
+    title: 'Lazy Layout',
+    icon: '📜',
+    items: [
+      { id: 'l1', label: 'Mỗi item có key ổn định và duy nhất.' },
+      { id: 'l2', label: 'Danh sách nhiều loại item có contentType.' },
+      { id: 'l3', label: 'Không dùng index làm key cho danh sách có thể thay đổi.' },
+      { id: 'l4', label: 'Không lồng scroll cùng chiều với constraint vô hạn.' },
+      { id: 'l5', label: 'Item không chứa tính toán, decode hoặc I/O nặng.' },
+      { id: 'l6', label: 'Animation trong item được giới hạn hợp lý.' },
+      { id: 'l7', label: 'Ảnh được tải theo kích thước hiển thị.' },
+    ],
+  },
+  {
+    id: 'modifier',
+    title: 'Modifier và Phases',
+    icon: '🎚️',
+    items: [
+      { id: 'm1', label: 'State thay đổi nhanh được đọc càng muộn càng tốt.' },
+      { id: 'm2', label: 'Offset/transform animation ưu tiên lambda modifier.' },
+      { id: 'm3', label: 'Draw-only state được đọc trong draw phase.' },
+      { id: 'm4', label: 'Modifier chain dài được tái sử dụng khi có lợi.' },
+      { id: 'm5', label: 'Không hoist scoped modifier sai scope.' },
+      { id: 'm6', label: 'Không dùng layout phức tạp khi layout đơn giản đủ dùng.' },
+    ],
+  },
+  {
+    id: 'effects',
+    title: 'Effects và Coroutine',
+    icon: '⚡',
+    items: [
+      { id: 'e1', label: 'API/network không được gọi trực tiếp trong thân Composable.' },
+      { id: 'e2', label: 'LaunchedEffect có key đúng.' },
+      { id: 'e3', label: 'Listener được cleanup bằng DisposableEffect.' },
+      { id: 'e4', label: 'Callback dài hạn dùng rememberUpdatedState khi phù hợp.' },
+      { id: 'e5', label: 'Coroutine từ event dùng rememberCoroutineScope.' },
+      { id: 'e6', label: 'I/O và blocking work không chạy trên Main Thread.' },
+      { id: 'e7', label: 'Flow được collect theo lifecycle.' },
+    ],
+  },
+  {
+    id: 'stability',
+    title: 'Stability',
+    icon: '🧊',
+    items: [
+      { id: 's1', label: 'Model UI không chứa public mutable property.' },
+      { id: 's2', label: 'Không gắn @Stable hoặc @Immutable sai contract.' },
+      { id: 's3', label: 'Đã kiểm tra compiler report khi stability là nghi vấn.' },
+      { id: 's4', label: 'Không thay đổi object hoặc collection tại chỗ.' },
+      { id: 's5', label: 'Không tạo wrapper model chỉ để "đánh lừa" compiler.' },
+    ],
+  },
+  {
+    id: 'animation',
+    title: 'Animation và Graphics',
+    icon: '🎞️',
+    items: [
+      { id: 'a1', label: 'Ưu tiên transform/draw thay vì relayout lớn.' },
+      { id: 'a2', label: 'Không tạo object nặng mỗi frame.' },
+      { id: 'a3', label: 'Animation vô hạn được dừng khi không còn cần.' },
+      { id: 'a4', label: 'Shadow, blur và clipping phức tạp đã được đo.' },
+      { id: 'a5', label: 'Bitmap không lớn hơn nhu cầu hiển thị quá nhiều.' },
+    ],
+  },
+  {
+    id: 'measure',
+    title: 'Đo lường',
+    icon: '📊',
+    items: [
+      { id: 'd1', label: 'Vấn đề được tái hiện trên release/benchmark build.' },
+      { id: 'd2', label: 'Đã đo trước và sau thay đổi.' },
+      { id: 'd3', label: 'Đã kiểm tra frame timing bằng Macrobenchmark hoặc trace.' },
+      { id: 'd4', label: 'Đã kiểm tra startup bằng benchmark.' },
+      { id: 'd5', label: 'Baseline Profile bao phủ luồng người dùng quan trọng.' },
+      { id: 'd6', label: 'Không kết luận chỉ dựa trên Recomposition Counter.' },
+    ],
+  },
+]

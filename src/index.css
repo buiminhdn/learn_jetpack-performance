@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-50 text-ink-800 font-sans antialiased;
+}
+
+/* Offset anchored sections below the sticky topbar */
+.scroll-anchor {
+  scroll-margin-top: 88px;
+}
+
+/* Custom scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 130, 150, 0.4) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-ink-300/50;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-ink-200/70 bg-white shadow-sm;
+  }
+
+  .card-muted {
+    @apply rounded-xl border border-ink-200/70 bg-ink-50/80;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/60 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-500 active:scale-[0.98];
+  }
+  .btn-android {
+    @apply btn bg-android-500 text-ink-950 hover:bg-android-400 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn border border-ink-200 bg-transparent text-ink-700 hover:bg-ink-100;
+  }
+
+  .prose-vi {
+    @apply text-[15px] leading-relaxed text-ink-700;
+  }
+  .prose-vi code {
+    @apply rounded-md bg-ink-100 px-1.5 py-0.5 font-mono text-[0.85em] text-brand-700;
+  }
+}
+
+/* Recomposition flash highlight used by demos */
+.recompose-flash {
+  animation: flash 0.6s ease-out;
+}
+.recompose-flash-ok {
+  animation: flash-green 0.6s ease-out;
+}
