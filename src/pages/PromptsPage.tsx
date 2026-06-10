@@ -46,8 +46,11 @@ export function PromptsPage() {
         </p>
         <h1 className="mt-1 text-3xl font-extrabold text-ink-900 sm:text-4xl">Thư viện Prompt</h1>
         <p className="mt-2 prose-vi">
-          {total} prompt sẵn sàng để dán vào AI (Claude, ChatGPT, Gemini...) kèm code của bạn. Bấm{' '}
-          <span className="font-semibold">Sao chép</span>, dán prompt, rồi thay đoạn code cần review.
+          {total} prompt sẵn sàng để dán vào AI (Claude, ChatGPT, Gemini...). Gồm prompt{' '}
+          <span className="font-semibold">review từng đoạn code</span> và prompt{' '}
+          <span className="font-semibold">audit toàn project</span> — loại audit sẽ yêu cầu AI quét cả
+          codebase và xuất báo cáo ra file <span className="font-mono text-ink-700">.md</span>. Bấm{' '}
+          <span className="font-semibold">Sao chép</span> rồi dán vào AI agent (Claude Code, Cursor...).
         </p>
       </header>
 
@@ -111,6 +114,18 @@ export function PromptsPage() {
                     <div className="min-w-0">
                       <h3 className="font-bold text-ink-800">{prompt.title}</h3>
                       <p className="mt-0.5 text-sm text-ink-500">{prompt.description}</p>
+                      {prompt.scope === 'project' && (
+                        <div className="mt-2 flex flex-wrap items-center gap-2">
+                          <span className="chip bg-android-100 text-[11px] font-semibold text-android-700">
+                            📦 Toàn project
+                          </span>
+                          {prompt.output && (
+                            <span className="chip bg-ink-900 text-[11px] font-mono text-white">
+                              → {prompt.output}
+                            </span>
+                          )}
+                        </div>
+                      )}
                       <div className="mt-2 flex flex-wrap gap-1.5">
                         {prompt.tags.map((tag) => (
                           <span key={tag} className="chip bg-brand-100 text-[11px] text-brand-700">

@@ -73,6 +73,10 @@ export interface PromptItem {
   tags: string[]
   /** The full prompt body, copied to clipboard as-is. */
   body: string
+  /** Phạm vi áp dụng: review một đoạn code, hay audit toàn project. Mặc định 'snippet'. */
+  scope?: 'snippet' | 'project'
+  /** Tên file .md mà prompt yêu cầu AI xuất ra (chỉ cho prompt audit toàn project). */
+  output?: string
 }
 
 /** A category grouping prompts in the library. */
