@@ -62,27 +62,26 @@ export interface ChecklistCategory {
 
 export type ComposePhase = 'composition' | 'layout' | 'draw'
 
+/** Phạm vi áp dụng của prompt: audit toàn dự án, hay review một feature. */
+export type PromptScope = 'project' | 'feature'
+
 /** A reusable AI review prompt in the prompt library. */
 export interface PromptItem {
   id: string
+  /** Phạm vi: 'project' (toàn dự án) hoặc 'feature' (điền tên feature vào chỗ trống). */
+  scope: PromptScope
+  /** Nhãn chủ đề dùng để nhóm trong mỗi section (vd 'Hiệu năng'). */
+  category: string
+  /** Icon của chủ đề. */
+  icon: string
   /** Short Vietnamese title. */
   title: string
   /** One-line description of what the prompt does. */
   description: string
   /** Tags shown as chips (e.g. "Performance", "Logic"). */
   tags: string[]
-  /** The full prompt body, copied to clipboard as-is. */
+  /** The full prompt body. Prompt feature dùng token {{FEATURE}} làm chỗ trống. */
   body: string
-  /** Phạm vi áp dụng: review một đoạn code, hay audit toàn project. Mặc định 'snippet'. */
-  scope?: 'snippet' | 'project'
-  /** Tên file .md mà prompt yêu cầu AI xuất ra (chỉ cho prompt audit toàn project). */
+  /** Tên file .md AI sẽ xuất ra (nếu có). Có thể chứa token {{FEATURE}}. */
   output?: string
-}
-
-/** A category grouping prompts in the library. */
-export interface PromptCategory {
-  id: string
-  title: string
-  icon: string
-  prompts: PromptItem[]
 }
